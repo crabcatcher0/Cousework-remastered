@@ -1,20 +1,17 @@
 import styles from './Navbar.module.css';
 
 function Navbar() {
-    <div className={styles.navbar}>
-        <navbar>
-            <div className={styles.navBrand}>
-                <h2>HOSTEL</h2>
-            </div>
+    return(
+        <div className={styles.navbar}>
+            <h2 className={styles.navTitle}>HOSTEL</h2>
             <ul>
-                <li>Home</li>
-                <li>Hostels</li>
-                <li>Signup</li>
-                <li>Contact</li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Hostels</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Signup</a></li>
             </ul>
-        </navbar>
-
-    </div>
+        </div>
+    );
 
 }
 
