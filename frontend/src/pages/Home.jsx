@@ -3,7 +3,9 @@ import styles from './Home.module.css'
 function Home() {
     return(
         <div className={styles.homepage}>
-            <h1>Ideal Hostel Few Clicks Away</h1>
+            <h1>
+                <span className={styles.titlePart}>Ideal Hostel</span> Few Clicks Away
+            </h1>
             <form className={styles.searchForm}>
                 <div className={styles.searchContainer}>
                     <input

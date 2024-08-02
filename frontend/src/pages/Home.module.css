@@ -3,6 +3,10 @@
     text-align: center;
     margin-top: 20vh;
 }
+.titlePart {
+    color: orange;   
+}
+
 
 .searchForm {
     display: flex; 
