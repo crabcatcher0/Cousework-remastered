@@ -1,0 +1,32 @@
+.LocationForm {
+    display: flex;
+    align-items: center;
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.inputContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.locationInput {
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.searchButton {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}

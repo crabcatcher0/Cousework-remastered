@@ -1,46 +1,10 @@
 .homepage {
-    color: whitesmoke;
+    color: black;
     text-align: center;
     margin-top: 20vh;
 }
 .titlePart {
-    color: orange;   
+    color: green;  
+    font-size: larger; 
 }
 
-
-.searchForm {
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    margin: 20px 0; 
-}
-
-.searchInput {
-    padding: 15px; 
-    font-size: 1rem; 
-    border: 1px solid #ccc; 
-    border-radius: 15px; 
-    width: 290px; 
-    margin-right: 10px;
-    outline: none;
-    transition: border-color 0.3s;
-}
-
-.searchInput:focus {
-    border-color: #a8a8a8; 
-}
-
-.searchButton {
-    padding: 16px 20px; 
-    font-size: 1rem; 
-    color: white; 
-    background-color: #3ca33c; 
-    border: none; 
-    border-radius: 15px; 
-    cursor: pointer; 
-    transition: background-color 0.3s; 
-}
-
-.searchButton:hover {
-    background-color: rgb(7, 92, 7); 
-}

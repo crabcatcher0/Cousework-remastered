@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import { BrowserRouter as Router , Route, Routes } from 'react-router-dom'
-import Hostels from "./pages/Hostels";
+import HostelList from "./components/HostelList";
 
 function App() {
 
@@ -12,7 +12,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/hostels" element={<Hostels />}/>
+        <Route path="/hostels" element={<HostelList />}/>
       </Routes>
     </Router>      
     </>

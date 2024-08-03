@@ -1,0 +1,108 @@
+.hostelListContainer {
+    padding: 20px;
+    text-align: center;
+}
+
+.hostelList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.hostelCard {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.hostelImage {
+    width: 100%;
+    height: auto;
+}
+
+.hostelTitle {
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+
+.hostelRating {
+    font-size: 1rem;
+    color: #f39c12;
+    margin: 5px 0;
+}
+
+.hostelDescription {
+    font-size: 0.875rem;
+    color: #555;
+    padding: 0 10px;
+    margin-bottom: 2px;
+}
+
+.hostelLocation {
+    color: #555;
+    margin-top: 5px;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center; 
+    gap: 10px; 
+    padding: 0 10px; 
+}
+
+.button {
+    background-color: #3498db; 
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    margin-top: 5px;
+}
+
+.button:hover {
+    background-color: #2980b9; 
+}
+
+.filterButton {
+    display: flex;
+    flex-direction: row; 
+    align-items: center; 
+    gap: 10px; 
+    padding: 10px; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+}
+
+.filterButton p {
+    font-size: 1.25rem; 
+    margin-bottom: 15px;
+    width: 100%; 
+    text-align: center;
+}
+
+.typebutton,
+.locationbutton,
+.ratingbutton {
+    background-color: #3498db; 
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s; 
+}
+
+.typebutton:hover,
+.locationbutton:hover,
+.ratingbutton:hover {
+    background-color: #2980b9; 
+}
