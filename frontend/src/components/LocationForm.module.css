@@ -1,7 +1,7 @@
 .LocationForm {
     display: flex;
     align-items: center;
-    max-width: 400px;
+    width: 40%;
     margin: 0 auto;
     position: relative;
 }
@@ -15,7 +15,7 @@
 .locationInput {
     width: 100%;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #454545;
     border-radius: 4px;
     outline: none;
 

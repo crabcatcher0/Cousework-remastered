@@ -7,7 +7,7 @@ function Home() {
     return(
         <div className={styles.homepage}>
             <h1>
-                <span className={styles.titlePart}>Ideal Hostel</span> Few Clicks Away.
+                <span className={styles.titlePart}>Your Ideal Hostel</span> Few Clicks Away.
             </h1>
             <div className={styles.searchContainer}>
                 <MainSearch />
