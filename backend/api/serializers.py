@@ -1,8 +1,16 @@
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from rest_framework import serializers
 
 
-class UserCreationSerializer(serializers.ModelSerializer):
+
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = UserCreationForm
-        fields = ['email', 'username', 'first_name', 'last_name', 'password']
+        model = User
+        fields = ['username', 'first_name', 'last_name', 'password']
+        
+
+
+class UserListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'first_name', 'last_name']
