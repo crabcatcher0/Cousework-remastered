@@ -5,6 +5,9 @@ from rest_framework.views import APIView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .serializers import UserSerializer, UserListSerializer, LoginSerializer
+from django.contrib.auth.decorators import login_required
+from rest_framework.permissions import IsAuthenticated
+
 
 # Create your views here.
 
@@ -24,13 +27,13 @@ class Registerpage(APIView):
             user.save()
             return Response({'message:':'success!!'}, status=status.HTTP_201_CREATED)
         else:
+            print(serialized.errors)
             return Response(serialized.errors, status=status.HTTP_400_BAD_REQUEST)
         
 
 
 class UserList(APIView):
     def get(self, request, id=None):
-
         if id is None:
             query = User.objects.all()
             serializer = UserListSerializer(query, many=True)
@@ -58,4 +61,3 @@ class LoginView(APIView):
         else:
             return Response(serialized.errors, status=status.HTTP_400_BAD_REQUEST)
         
-
