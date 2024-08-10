@@ -1,0 +1,68 @@
+.signUp {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.signformGroup {
+    margin-bottom: 15px;
+}
+
+.signlabel {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+}
+
+.signInput[type="text"],
+.signInput[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.signInput[type="text"]:focus,
+.signInput[type="password"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.signButton {
+    width: 100%;
+    padding: 10px;
+    background-color: #525b81;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.signButton:hover {
+    background-color: #3c466e;
+}
+
+.alreadyLink {
+    margin-top: 10px;
+}
