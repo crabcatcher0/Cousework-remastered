@@ -16,7 +16,7 @@ function Profile() {
                     credentials: 'include',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-CSRFToken': window.CSRF_TOKEN, // Include CSRF token if needed
+                        'X-CSRFToken': window.CSRF_TOKEN,
                     },
                 });
 
@@ -39,7 +39,7 @@ function Profile() {
             method: 'POST',
             credentials: 'include',
         }).then(() => {
-            navigate('/login'); // Redirect to login page after logout
+            navigate('/login'); 
         });
     };
 
