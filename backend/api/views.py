@@ -1,16 +1,13 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-from .serializers import UserSerializer, UserListSerializer, LoginSerializer
-from django.contrib.auth.decorators import login_required
-from rest_framework.permissions import IsAuthenticated
+from .serializers import UserSerializer, UserListSerializer, LoginSerializer, HostelSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
-from django.http import JsonResponse
-
+from .models import Hostel
 
 
 
@@ -75,6 +72,7 @@ class LoginView(APIView):
             return Response(serialized.errors, status=status.HTTP_400_BAD_REQUEST)
         
 
+
 @api_view(['GET'])
 def show_user(request):
     user = request.user
@@ -87,3 +85,24 @@ def show_user(request):
         return Response(user_data, status=status.HTTP_200_OK)
     else:
         return Response({'message': 'Error showing data'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+class HostelView(APIView):
+    def get(self, request, id=None):
+        if id is None:
+            al_hostel = Hostel.objects.all()
+            all_serializer = HostelSerializer(al_hostel, many=True)
+            return Response(all_serializer.data, status=status.HTTP_200_OK)
+        else:
+            one_hostel = get_object_or_404(Hostel, pk=id)
+            one_serialized = HostelSerializer(one_hostel, partial=True)
+            return Response(one_serialized.data, status=status.HTTP_200_OK)
+        
+    def post(self, request):
+        request_data = HostelSerializer(data=request.data)
+        if request_data.is_valid():
+            request_data.save()
+            return Response({'message':'success'}, status=status.HTTP_201_CREATED)
+        else:
+            return Response(request_data.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
