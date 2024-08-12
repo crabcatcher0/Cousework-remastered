@@ -32,7 +32,7 @@ function Profile() {
                     setUser(data);
                 } else if (response.status === 401) {
                     setError('You are not authenticated. Please log in.');
-                    navigate('/login');
+                    navigate('/signup');
                 } else {
                     setError('Failed to load user data');
                 }
@@ -47,7 +47,7 @@ function Profile() {
     const handleLogout = () => {
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
-        navigate('/login');
+        navigate('/signup');
     };
 
     if (error) {

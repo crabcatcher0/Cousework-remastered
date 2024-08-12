@@ -7,11 +7,14 @@ import Footer from "./components/Footer";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
+import { AuthProvider } from '../src/auth_context/AuthContext.jsx';
+
 
 function App() {
 
   return (
     <>
+  <AuthProvider>
     <Router>
       <Navbar />
       <Routes>
@@ -22,7 +25,8 @@ function App() {
         <Route path="/profile" element={<Profile />}/>
       </Routes>
       <Footer />
-    </Router>      
+    </Router>    
+  </AuthProvider> 
     </>
   )
 }
