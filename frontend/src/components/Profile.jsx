@@ -1,28 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Profile.module.css';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../baseUrl/BASE_URL';
 
 function Profile() {
     const [user, setUser] = useState(null);
     const [error, setError] = useState('');
     const navigate = useNavigate();
-    const { id } = useParams();
 
     useEffect(() => {
         const fetchUserData = async () => {
+            const token = localStorage.getItem('access_token');
+
+            if (!token) {
+                setError('No access token found. Please log in.');
+                navigate('/login');
+                return;
+            }
+
             try {
-                const response = await fetch(`${BASE_URL}user/${id}/`, {
-                    credentials: 'include',
+                const response = await fetch(`${BASE_URL}show_user/`, {
+                    method: 'GET',
                     headers: {
+                        'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json',
-                        'X-CSRFToken': window.CSRF_TOKEN,
                     },
                 });
 
                 if (response.ok) {
                     const data = await response.json();
                     setUser(data);
+                } else if (response.status === 401) {
+                    setError('You are not authenticated. Please log in.');
+                    navigate('/login');
                 } else {
                     setError('Failed to load user data');
                 }
@@ -32,15 +42,12 @@ function Profile() {
         };
 
         fetchUserData();
-    }, [id]);
+    }, [navigate]);
 
     const handleLogout = () => {
-        fetch(`${BASE_URL}logout/`, {
-            method: 'POST',
-            credentials: 'include',
-        }).then(() => {
-            navigate('/login'); 
-        });
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('refresh_token');
+        navigate('/login');
     };
 
     if (error) {
