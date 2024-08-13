@@ -106,3 +106,17 @@ class HostelView(APIView):
             return Response({'message':'success'}, status=status.HTTP_201_CREATED)
         else:
             return Response(request_data.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class FilterHostelView(APIView):
+    def get(self, request, hostel_type=None):
+
+        if hostel_type and hostel_type.upper() in ["BOYS", "GIRLS"]:
+            data = Hostel.objects.filter(hostel_type=hostel_type.upper())
+            serialized_data = HostelSerializer(data, many=True)
+            return Response(serialized_data.data, status=status.HTTP_200_OK)
+        
+        return Response({"detail": "Invalid hostel type"}, status=status.HTTP_400_BAD_REQUEST)
+    
+
+
