@@ -34,16 +34,16 @@ class Registerpage(APIView):
         
 
 
-class UserList(APIView):
-    def get(self, request, id=None):
-        if id is None:
-            query = User.objects.all()
-            serializer = UserListSerializer(query, many=True)
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        else:
-            one_data = get_object_or_404(User, pk=id)
-            serialized = UserListSerializer(one_data, partial=True)
-            return Response(serialized.data, status=status.HTTP_200_OK)
+# class UserList(APIView):
+#     def get(self, request, id=None):
+#         if id is None:
+#             query = User.objects.all()
+#             serializer = UserListSerializer(query, many=True)
+#             return Response(serializer.data, status=status.HTTP_200_OK)
+#         else:
+#             one_data = get_object_or_404(User, pk=id)
+#             serialized = UserListSerializer(one_data, partial=True)
+#             return Response(serialized.data, status=status.HTTP_200_OK)
         
 
 

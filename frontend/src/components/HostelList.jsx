@@ -1,43 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './HostelList.module.css';
-import imageOne from '../assets/hostel1.jpg';
-import imageTwo from '../assets/hostel2.jpeg';
-import imageThree from '../assets/hostel3.jpeg';
-
+import { BASE_URL } from '../baseUrl/BASE_URL';
 
 function HostelList() {
+    const [hostels, setHostels] = useState([]);
 
+    useEffect(() => {
+        const fetchHostels = async () => {
+            try {
+                const response = await fetch(`${BASE_URL}hostel/`);
+                if (!response.ok) {
+                    throw new Error('Error....');
+                }
+                const data = await response.json();
+                setHostels(data);
+            } catch (error) {
+                console.error("error fetching the hostels!", error);
+            }
+        };
 
-    const hostels = [
-        {
-            id: 1,
-            name: "Hostel One",
-            rating: "★★★★☆",
-            description: "A cozy hostel with excellent amenities and a vibrant community.",
-            image: imageOne,
-            location: "Kathmandu, Baneshwor",
-
-        },
-        {
-            id: 2,
-            name: "Hostel Two",
-            rating: "★★★☆☆",
-            description: "A budget-friendly option with comfortable rooms and friendly staff.",
-            image: imageTwo,
-            location: "Kathmandu, Baneshwor",
-
-        },
-        {
-            id: 3,
-            name: "Hostel Three",
-            rating: "★★★★★",
-            description: "Luxurious hostel with premium features and great service.",
-            image: imageThree,
-            location: "Kathmandu, Baneshwor",
-
-        },
-        
-    ];
+        fetchHostels();
+    }, []);
 
     return (
         <div className={styles.hostelListContainer}>
@@ -52,16 +35,15 @@ function HostelList() {
                 {hostels.map(hostel => (
                     <div key={hostel.id} className={styles.hostelCard}>
                         <img
-                            src={hostel.image}
-                            alt={hostel.name}
+                            src={hostel.cover_image}  
+                            alt={hostel.hostel_name}
                             className={styles.hostelImage}
                         />
-                        <h2 className={styles.hostelTitle}>{hostel.name}</h2>
-                        <p className={styles.hostelRating}>Rating: {hostel.rating}</p>
+                        <h2 className={styles.hostelTitle}>{hostel.hostel_name}</h2>
                         <p className={styles.hostelDescription}>
-                            {hostel.description}
+                            {hostel.hostel_description}
                         </p>
-                        <p className={styles.hostelLocation}>{hostel.location}</p>
+                        <p className={styles.hostelLocation}>{hostel.main_location}, {hostel.sec_location}</p>
                         <div className={styles.buttonContainer}>
                             <button className={styles.button}>View Details</button>
                             <button className={styles.button}>Contact</button>
